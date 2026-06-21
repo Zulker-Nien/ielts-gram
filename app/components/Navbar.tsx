@@ -104,7 +104,7 @@ export default function Navbar() {
                 </a>
               );
             })}
-            <div className="px-3 pt-2">
+            <div className="px-3 pt-2 ">
               <LanguageToggle />
             </div>
           </div>

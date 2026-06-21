@@ -40,18 +40,18 @@ export default function ContactForm() {
 
         <div className="anim-in mt-12 grid gap-6 text-center sm:grid-cols-2">
           {[
-            { icon: "✉️", label: "Email", val: "hello@ieltsgram.com", href: "mailto:hello@ieltsgram.com" },
+            {  label: "Connect with us on Facebook", href: "https://www.facebook.com/profile.php?id=61559938447857" },
             { icon: "💬", label: "WhatsApp", val: "‪+880 1767‑301423‬", href: "https://wa.me/1767301423" },
-            { icon: "👍", label: "Facebook", href: "https://www.facebook.com/profile.php?id=61559938447857" },
+            { icon: "✉️", label: "Email", val: "hello@ieltsgram.com", href: "mailto:hello@ieltsgram.com" },
           ].map((item) => (
             <a
               key={item.label}
               href={item.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-xl border border-theme-border bg-theme-surface-alt p-5 transition-colors hover:border-theme-accent/30"
+              className={`rounded-xl border border-theme-border bg-theme-surface-alt p-5 transition-colors hover:border-theme-accent/30 ${item.label === "Email" && "col-span-2"}`}
             >
-              <span className="text-2xl">{item.icon}</span>
+              {item.icon && <span className="text-2xl">{item.icon}</span>}
               <p className="mt-1 text-sm font-medium text-theme-text">{item.val}</p>
               <p className="text-xs text-theme-text-muted">{item.label}</p>
             </a>

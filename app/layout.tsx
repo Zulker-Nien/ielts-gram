@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "ieltsgram — Speak With Confidence",
   description:
-    "Specialised IELTS Speaking coaching with personalised sessions, mock tests, and proven strategies to achieve your target band.",
+    "Specialised IELTS coaching with personalised sessions, practice tests, and proven strategies to achieve your target band.",
 };
 
 export default function RootLayout({

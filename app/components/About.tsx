@@ -3,16 +3,19 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useStore } from "@/app/store/useStore";
+import { t } from "@/app/store/translations";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const highlights = [
-  { number: "12+", label: "Years Experience" },
-  { number: "2000+", label: "Students Taught" },
-  { number: "8.5", label: "Avg. Speaking Band" },
+  { number: "6+", labelKey: 0 },
+  { number: "5000+", labelKey: 1 },
+  { number: "8.5", labelKey: 2 },
 ];
 
 export default function About() {
+  const lang = useStore((s) => s.lang);
   const sectionRef = useRef<HTMLElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -58,30 +61,26 @@ export default function About() {
       <div className="mx-auto max-w-6xl px-6">
         <div ref={contentRef} className="mb-16 max-w-2xl">
           <p className="animate-in mb-3 text-sm font-semibold uppercase tracking-widest text-theme-accent">
-            About Me
+            {t.about.badge[lang]}
           </p>
           <h2 className="animate-in text-4xl font-bold leading-tight tracking-tight text-theme-text md:text-5xl">
-            Dedicated to helping you <span className="text-theme-accent">succeed</span>
+            {t.about.title[lang]} <span className="text-theme-accent">{t.about.titleHighlight[lang]}</span>
           </h2>
           <p className="animate-in mt-6 text-lg leading-relaxed text-theme-text-muted">
-            For over a decade, I have helped students master the IELTS Speaking test.
-            My approach targets the four assessment criteria — Fluency, Lexical Resource,
-            Grammar, and Pronunciation — through real-conversation practice and
-            targeted feedback. Every session is designed to build your confidence
-            and refine your delivery.
+            {t.about.paragraph[lang]}
           </p>
         </div>
 
         <div className="grid gap-6 sm:grid-cols-3">
-          {highlights.map((h, i) => (
+          {highlights.map((item, i) => (
             <div
-              key={h.label}
+              key={item.labelKey}
               ref={(el) => { cardsRef.current[i] = el; }}
               className="group rounded-2xl border border-theme-border bg-theme-surface p-8 text-center transition-all hover:border-theme-accent/30 hover:shadow-lg"
               style={{ boxShadow: "0 4px 24px rgba(0,0,0,0.04)" }}
             >
-              <div className="text-4xl font-bold text-theme-accent">{h.number}</div>
-              <div className="mt-2 text-sm font-medium text-theme-text-muted">{h.label}</div>
+              <div className="text-4xl font-bold text-theme-accent">{item.number}</div>
+              <div className="mt-2 text-sm font-medium text-theme-text-muted">{t.about.highlights[item.labelKey][lang]}</div>
             </div>
           ))}
         </div>

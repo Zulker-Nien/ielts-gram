@@ -1,32 +1,42 @@
 "use client";
 
+import { useStore } from "@/app/store/useStore";
+import { t } from "@/app/store/translations";
+import Image from "next/image";
+
 export default function Footer() {
+  const lang = useStore((s) => s.lang);
   return (
     <footer className="border-t border-theme-border bg-theme-surface-alt">
       <div className="mx-auto max-w-6xl px-6 py-12">
         <div className="grid gap-8 sm:grid-cols-3">
           <div>
-            <span className="text-xl font-bold tracking-tight text-theme-accent">
-              ielts<span className="text-theme-text">gram</span>
-            </span>
+            <Image
+                      alt="logo"
+                      src={"/logo.png"}
+                      width={0}
+                      height={0}
+                      className="h-16 w-auto"
+                      unoptimized
+                    />
             <p className="mt-3 text-sm leading-relaxed text-theme-text-muted">
-              Specialised IELTS Speaking coaching with a proven track record of Band 7+ results.
+              {t.footer.tagline[lang]}
             </p>
           </div>
           <div>
-            <h4 className="mb-4 text-sm font-semibold text-theme-text">Quick Links</h4>
+            <h4 className="mb-4 text-sm font-semibold text-theme-text">{t.footer.quickLinks[lang]}</h4>
             <ul className="space-y-2 text-sm text-theme-text-muted">
-              {["About", "Services", "Testimonials", "Contact"].map((l) => (
-                <li key={l}>
-                  <a href={`#${l.toLowerCase()}`} className="transition-colors hover:text-theme-accent">
-                    {l}
+              {t.footer.footerLinks.map((l) => (
+                <li key={l.en}>
+                  <a href={`#${l.en.toLowerCase()}`} className="transition-colors hover:text-theme-accent">
+                    {l[lang]}
                   </a>
                 </li>
               ))}
             </ul>
           </div>
           <div>
-            <h4 className="mb-4 text-sm font-semibold text-theme-text">Contact</h4>
+            <h4 className="mb-4 text-sm font-semibold text-theme-text">{t.footer.contact[lang]}</h4>
             <ul className="space-y-2 text-sm text-theme-text-muted">
               <li>
                 <a href="mailto:hello@ieltsgram.com" className="transition-colors hover:text-theme-accent">
@@ -47,7 +57,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-10 border-t border-theme-border pt-6 text-center text-xs text-theme-text-muted">
-          &copy; {new Date().getFullYear()} ieltsgram. All rights reserved.
+          &copy; {new Date().getFullYear()} ieltsgram. {t.footer.copyright[lang]}
         </div>
       </div>
     </footer>

@@ -2,8 +2,12 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { useStore } from "@/app/store/useStore";
+import { t } from "@/app/store/translations";
 
 export default function Hero() {
+  const lang = useStore((s) => s.lang);
+  const h = t.hero;
   const containerRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
@@ -65,28 +69,27 @@ export default function Hero() {
           ref={badgeRef}
           className="mb-8 inline-block rounded-full border border-theme-border bg-theme-surface-alt px-4 py-1.5 text-xs font-medium text-theme-accent"
         >
-          IELTS Speaking — Band 7+ Specialist
+          {h.badge[lang]}
         </div>
 
         <h1
           ref={titleRef}
           className="text-5xl font-bold leading-tight tracking-tight sm:text-6xl md:text-7xl"
         >
-          {"Speak with".split(" ").map((word, i) => (
+          {h.titleWords[lang].map((word, i) => (
             <span key={i} className="word mr-4 inline-block text-theme-text">
               {word}
             </span>
           ))}
           <br />
-          <span className="word inline-block text-theme-accent">Confidence</span>
+          <span className="word inline-block text-theme-accent">{h.titleHighlight[lang]}</span>
         </h1>
 
         <p
           ref={subtitleRef}
           className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-theme-text-muted"
         >
-          Targeted Speaking coaching, real mock interviews, and exam-day strategies —
-          designed to help you ace the IELTS Speaking test on your first attempt.
+          {h.subtitle[lang]}
         </p>
 
         <div ref={ctaRef} className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -95,13 +98,13 @@ export default function Hero() {
             className="rounded-xl bg-theme-accent px-8 py-3.5 text-sm font-semibold text-white shadow-lg transition-all hover:scale-105 hover:shadow-xl"
             style={{ boxShadow: "0 8px 32px var(--theme-glow)" }}
           >
-            Book a Free Mock Test
+            {h.ctaPrimary[lang]}
           </a>
           <a
             href="#services"
             className="rounded-xl border border-theme-border bg-theme-surface px-8 py-3.5 text-sm font-semibold text-theme-text transition-all hover:bg-theme-surface-alt"
           >
-            See How It Works
+            {h.ctaSecondary[lang]}
           </a>
         </div>
       </div>

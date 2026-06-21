@@ -3,37 +3,13 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useStore } from "@/app/store/useStore";
+import { t } from "@/app/store/translations";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const faqs = [
-  {
-    q: "How long does it take to improve my Speaking band by 0.5–1?",
-    a: "Most students see a 0.5 band improvement within 4–6 weeks of consistent speaking practice, and a full band improvement within 8–12 weeks. Results depend on your starting level, practice frequency, and target score.",
-  },
-  {
-    q: "Do you offer a free mock test?",
-    a: "Yes. We offer a free 15-minute Speaking assessment where we evaluate your fluency, pronunciation, and response structure — no commitment required.",
-  },
-  {
-    q: "Are the speaking sessions online?",
-    a: "Yes, all sessions are conducted via video call so you can practice from anywhere. You will get real-time feedback on your pronunciation, grammar, and fluency during each session.",
-  },
-  {
-    q: "What kind of topics do you cover?",
-    a: "We cover all common IELTS themes — education, technology, environment, health, society, culture, and more. You will build topic-specific vocabulary and learn to handle any question confidently.",
-  },
-  {
-    q: "Can you help with both Academic and General Training?",
-    a: "Absolutely. The Speaking test is the same for both modules. My strategies apply universally and are tailored to your specific needs and target band.",
-  },
-  {
-    q: "What if I am nervous about speaking?",
-    a: "That is completely normal — and exactly what we work on first. Through gradual exposure, structured frameworks, and positive reinforcement, most students feel noticeably more confident after just 2–3 sessions.",
-  },
-];
-
 export default function Faq() {
+  const lang = useStore((s) => s.lang);
   const sectionRef = useRef<HTMLElement>(null);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -111,20 +87,22 @@ export default function Faq() {
     }
   };
 
+  const items = t.faq.items;
+
   return (
     <section ref={sectionRef} id="faq" className="py-24 md:py-32">
       <div className="mx-auto max-w-3xl px-6">
         <div className="anim-header mb-16 text-center">
           <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-theme-accent">
-            FAQ
+            {t.faq.badge[lang]}
           </p>
           <h2 className="text-4xl font-bold leading-tight tracking-tight text-theme-text md:text-5xl">
-            Got <span className="text-theme-accent">questions?</span>
+            {t.faq.title[lang]} <span className="text-theme-accent">{t.faq.titleHighlight[lang]}</span>
           </h2>
         </div>
 
         <div className="space-y-3">
-          {faqs.map((faq, i) => (
+          {items.map((faq, i) => (
             <div
               key={i}
               className="group overflow-hidden rounded-2xl border border-theme-border bg-theme-surface transition-colors hover:border-theme-accent/30"
@@ -134,7 +112,7 @@ export default function Faq() {
                 className="flex w-full items-center justify-between px-6 py-5 text-left"
               >
                 <span className="pr-4 text-base font-medium text-theme-text">
-                  {faq.q}
+                  {faq.q[lang]}
                 </span>
                 <span
                   ref={(el) => { iconRefs.current[i] = el; }}
@@ -148,7 +126,7 @@ export default function Faq() {
                 className="h-0 overflow-hidden opacity-0"
               >
                 <div className="border-t border-theme-border px-6 py-5">
-                  <p className="text-base leading-relaxed text-theme-text-muted">{faq.a}</p>
+                  <p className="text-base leading-relaxed text-theme-text-muted">{faq.a[lang]}</p>
                 </div>
               </div>
             </div>

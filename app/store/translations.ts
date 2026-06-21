@@ -32,7 +32,7 @@ export const t = {
     highlights: [
       { en: "Years Experience", bn: "বছরের অভিজ্ঞতা" },
       { en: "Students Taught", bn: "শিক্ষার্থী শেখানো" },
-      { en: "Highest acheivement", bn: "গড় স্পিকিং ব্যান্ড" },
+      { en: "Highest acheivement", bn: "সর্বোচ্চ অর্জন" },
     ],
   },
   services: {
@@ -178,6 +178,25 @@ export const t = {
           { en: "Daily Speaking Practice", bn: "দৈনিক স্পিকিং প্র্যাকটিস" },
           { en: "A to Z IELTS speaking vocabulary notes.", bn: "A to Z আইইএলটিএস স্পিকিং ভোকাবুলারি নোট" },
           { en: "Individual Feedback and Guidance", bn: "ব্যক্তিগত ফিডব্যাক এবং নির্দেশনা" },
+        ],
+        popular: false,
+      },
+      {
+        icon: "🎯",
+        title: { en: "IELTS Speaking Mock Test", bn: "আইইএলটিএস স্পিকিং মক টেস্ট" },
+        desc: {
+          en: "Experience the real IELTS speaking exam environment and evaluate your performance.",
+          bn: "বাস্তব আইইএলটিএস স্পিকিং পরীক্ষার পরিবেশ অনুভব করুন এবং আপনার পারফরম্যান্স মূল্যায়ন করুন।",
+        },
+        details: [
+          { en: "Fee: ৳200", bn: "ফি: ৳২০০" },
+          { en: "Mode: Individual Session", bn: "মোড: ব্যক্তিগত সেশন" },
+        ],
+        features: [
+          { en: "Real Exam Environment", bn: "বাস্তব পরীক্ষার পরিবেশ" },
+          { en: "Detailed Feedback", bn: "বিস্তারিত প্রতিক্রিয়া" },
+          { en: "Band Score Estimation", bn: "ব্যান্ড স্কোর অনুমান" },
+          { en: "Personalized Suggestions for Improvement", bn: "উন্নতির জন্য ব্যক্তিগতকৃত পরামর্শ" },
         ],
         popular: false,
       },

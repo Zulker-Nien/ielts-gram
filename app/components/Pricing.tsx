@@ -48,9 +48,9 @@ export default function Pricing() {
           {courses.map((course) => (
             <div
               key={course.title.en}
-              className={`anim-in group relative rounded-2xl border p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl col-span-2 md:col-span-1 ${
+              className={`anim-in group relative rounded-2xl border p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl ${
                 course.popular
-                  ? "border-theme-accent bg-theme-accent/5 shadow-lg md:col-span-2"
+                  ? "border-theme-accent bg-theme-accent/5 shadow-lg"
                   : "border-theme-border bg-theme-surface"
               }`}
             >

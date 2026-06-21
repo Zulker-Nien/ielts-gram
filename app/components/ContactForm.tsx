@@ -40,9 +40,9 @@ export default function ContactForm() {
 
         <div className="anim-in mt-12 grid gap-6 text-center sm:grid-cols-2">
           {[
-            {  label: "Connect with us on Facebook", href: "https://www.facebook.com/profile.php?id=61559938447857" },
+            { label: "Connect with us on Facebook", href: "https://www.facebook.com/profile.php?id=61559938447857" },
             { icon: "💬", label: "WhatsApp", val: "‪+880 1767‑301423‬", href: "https://wa.me/1767301423" },
-            { icon: "✉️", label: "Email", val: "hello@ieltsgram.com", href: "mailto:hello@ieltsgram.com" },
+            { icon: "✉️", label: "Email", val: "mahbuburrahman6532@gmail.com", href: "mailto:mahbuburrahman6532@gmail.com" },
           ].map((item) => (
             <a
               key={item.label}

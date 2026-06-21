@@ -10,9 +10,11 @@ interface AppState {
   darkMode: boolean;
   mobileMenuOpen: boolean;
   lang: Lang;
+  langLoaded: boolean;
   setTheme: (theme: Theme) => void;
   toggleDarkMode: () => void;
   setMobileMenuOpen: (open: boolean) => void;
+  setLang: (lang: Lang) => void;
   toggleLang: () => void;
 }
 
@@ -21,8 +23,10 @@ export const useStore = create<AppState>((set) => ({
   darkMode: false,
   mobileMenuOpen: false,
   lang: "en",
+  langLoaded: false,
   setTheme: (theme) => set({ theme }),
   toggleDarkMode: () => set((s) => ({ darkMode: !s.darkMode })),
   setMobileMenuOpen: (open) => set({ mobileMenuOpen: open }),
+  setLang: (lang) => set({ lang, langLoaded: true }),
   toggleLang: () => set((s) => ({ lang: s.lang === "en" ? "bn" : "en" })),
 }));

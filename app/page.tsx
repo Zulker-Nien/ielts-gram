@@ -11,6 +11,7 @@ import BandScoreCalc from "@/app/components/BandScoreCalc";
 import Faq from "@/app/components/Faq";
 import Footer from "@/app/components/Footer";
 import BackToTop from "@/app/components/BackToTop";
+import LanguagePrompt from "@/app/components/LanguagePrompt";
 import ContactForm from "./components/ContactForm";
 
 export default function Home() {
@@ -30,6 +31,7 @@ export default function Home() {
       </main>
       <Footer />
       <BackToTop />
+      <LanguagePrompt />
     </div>
   );
 }

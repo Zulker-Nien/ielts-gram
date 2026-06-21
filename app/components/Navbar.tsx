@@ -20,6 +20,8 @@ const links = [
 export default function Navbar() {
   const navRef = useRef<HTMLElement>(null);
   const lang = useStore((s) => s.lang);
+  const mobileMenuOpen = useStore((s) => s.mobileMenuOpen);
+  const setMobileMenuOpen = useStore((s) => s.setMobileMenuOpen);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -33,20 +35,29 @@ export default function Navbar() {
     return () => ctx.revert();
   }, []);
 
+  const handleNav = (href: string) => {
+    setMobileMenuOpen(false);
+    const el = document.querySelector(href);
+    el?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <nav
       ref={navRef}
       className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-theme-surface/80 border-b border-theme-border"
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Image
-          alt="logo"
-          src={"/logo.png"}
-          width={0}
-          height={0}
-          className="h-16 w-auto"
-          unoptimized
-        />
+        <a href="#">
+          <Image
+            alt="logo"
+            src={"/logo.png"}
+            width={0}
+            height={0}
+            className="h-16 w-auto"
+            unoptimized
+          />
+        </a>
+
         <div className="hidden items-center gap-8 md:flex">
           {links.map((link) => {
             const label = t.nav.links.find((l) => l.en === link.key);
@@ -62,7 +73,43 @@ export default function Navbar() {
           })}
           <LanguageToggle />
         </div>
+
+        <button
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="flex flex-col gap-1.5 md:hidden"
+          aria-label="Toggle menu"
+        >
+          <span className={`block h-0.5 w-6 rounded bg-theme-text transition-all duration-300 ${mobileMenuOpen ? "translate-y-2 rotate-45" : ""}`} />
+          <span className={`block h-0.5 w-6 rounded bg-theme-text transition-all duration-300 ${mobileMenuOpen ? "opacity-0" : ""}`} />
+          <span className={`block h-0.5 w-6 rounded bg-theme-text transition-all duration-300 ${mobileMenuOpen ? "-translate-y-2 -rotate-45" : ""}`} />
+        </button>
       </div>
+
+      {mobileMenuOpen && (
+        <div className="border-t border-theme-border bg-theme-surface md:hidden">
+          <div className="flex flex-col gap-2 px-6 py-4">
+            {links.map((link) => {
+              const label = t.nav.links.find((l) => l.en === link.key);
+              return (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNav(link.href);
+                  }}
+                  className="rounded-lg px-3 py-2 text-sm font-medium text-theme-text-muted transition-colors hover:bg-theme-surface-alt hover:text-theme-accent"
+                >
+                  {label ? label[lang] : link.key}
+                </a>
+              );
+            })}
+            <div className="px-3 pt-2">
+              <LanguageToggle />
+            </div>
+          </div>
+        </div>
+      )}
     </nav>
   );
 }

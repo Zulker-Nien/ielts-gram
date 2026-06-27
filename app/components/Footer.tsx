@@ -39,8 +39,8 @@ export default function Footer() {
             <h4 className="mb-4 text-sm font-semibold text-theme-text">{t.footer.contact[lang]}</h4>
             <ul className="space-y-2 text-sm text-theme-text-muted">
               <li>
-                <a href="mailto:hello@ieltsgram.com" className="transition-colors hover:text-theme-accent">
-                  hello@ieltsgram.com
+                <a href="mailto:mahbuburrahman6532@gmail.com" className="transition-colors hover:text-theme-accent">
+                  mahbuburrahman6532@gmail.com
                 </a>
               </li>
               <li>
@@ -49,7 +49,7 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="https://facebook.com/ieltsgram" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-theme-accent">
+                <a href="https://www.facebook.com/profile.php?id=61559938447857" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-theme-accent">
                   Facebook
                 </a>
               </li>
